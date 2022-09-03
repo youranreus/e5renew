@@ -30,10 +30,10 @@ const sendNotice = async (reports) => {
 					}
 				)
 				.then((res) => {
-					console.log("report sent");
+					console.log("[e5] report sent");
 				});
 		} catch (error) {
-			console.log(error.message);
+			console.log("[e5] " + error.message);
 		}
 	});
 };

@@ -11,7 +11,7 @@ const getUserData = async (API) => (await API.get("/me")).data;
 const run = async (token) => {
 	const API = createAPI(token);
 	const UserData = await getUserData(API);
-	console.log(`用户${UserData.displayName}开始执行`);
+	console.log(`[e5] 用户${UserData.displayName}开始执行`);
 	const report = {
 		user: UserData.displayName,
 		successNum: 0,
@@ -25,10 +25,11 @@ const run = async (token) => {
 	for (let i = 0; i < apiList.length; i++) {
 		await randomSleep();
 		try {
+            console.log(`[e5] 用户${report.user}请求${apiList[i]}`);
 			await API.get(apiList[i]);
 			report.successNum++;
 		} catch (e) {
-			console.log(e.message);
+			console.log("[e5] " + e.message);
 			report.errorNum++;
 			report.errors.push([apiList[i], e.message]);
 		}

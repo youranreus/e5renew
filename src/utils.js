@@ -21,7 +21,7 @@ const randomNum = (min, max) => min + Math.round(Math.random() * (max - min));
  * Ëæ»úË¯Ãß
  */
 const randomSleep = async () => {
-	console.log("random sleep...");
+	console.log("[e5] random sleep...");
 	await sleep(randomNum(1, 60) * SECOND);
 };
 
