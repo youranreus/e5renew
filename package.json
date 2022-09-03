@@ -13,6 +13,7 @@
   "author": "youranreus@qq.com",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "dotenv": "^16.0.2"
   }
 }
