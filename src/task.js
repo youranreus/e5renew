@@ -23,7 +23,7 @@ const run = async (token) => {
 	};
 
 	for (let i = 0; i < apiList.length; i++) {
-		// await randomSleep();
+		await randomSleep();
 		try {
 			await API.get(apiList[i]);
 			report.successNum++;
