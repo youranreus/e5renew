@@ -81,7 +81,7 @@ crontab -e
 crontab -e
 
 # 添加一行
-10 9 * * * docker container run -it --rm -v path_to_your_userdata:/data -e APP_ID=xxx -e APP_SECRET=xxx -e SERVER_CHAN=xxx youranreus/e5renew /bin/sh /work/start.sh
+10 9 * * * docker container run --rm -v path_to_your_userdata:/data -e APP_ID=xxx -e APP_SECRET=xxx -e SERVER_CHAN=xxx youranreus/e5renew /bin/sh /work/start.sh
 
 # esc :wq保存退出
 ```
