@@ -3,22 +3,22 @@ const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
 /**
- * Ë¯Ãß
- * @param {number} time Ë¯ÃßÊ±¼ä
+ * ç¡çœ 
+ * @param {number} time ç¡çœ æ—¶é—´
  * @returns promise
  */
 const sleep = (time) => new Promise((rs) => setTimeout(rs, time));
 
 /**
- * Ëæ»úÊý
- * @param {number} min ×î´óÖµ
- * @param {number} max ×îÐ¡Öµ
+ * éšæœºæ•°å­—
+ * @param {number} min æœ€å¤§å€¼
+ * @param {number} max æœ€å°å€¼
  * @returns number
  */
 const randomNum = (min, max) => min + Math.round(Math.random() * (max - min));
 
 /**
- * Ëæ»úË¯Ãß
+ * éšæœºç¡çœ 
  */
 const randomSleep = async () => {
 	console.log("[e5] random sleep...");
