@@ -3,24 +3,33 @@ const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
 /**
- * ç¡çœ 
- * @param {number} time ç¡çœ æ—¶é—´
+ * Ë¯Ãß
+ * @param {number} time Ë¯ÃßÊ±¼ä
  * @returns promise
  */
 const sleep = (time) => new Promise((rs) => setTimeout(rs, time));
 
 /**
- * éšæœºæ•°
- * @param {number} min æœ€å°å€¼
- * @param {number} max æœ€å¤§å€¼
+ * Ëæ»úÊý
+ * @param {number} min ×î´óÖµ
+ * @param {number} max ×îÐ¡Öµ
  * @returns number
  */
-const randomNum = async (min, max) => min + Math.round(Math.random() * (max - min))
+const randomNum = (min, max) => min + Math.round(Math.random() * (max - min));
+
+/**
+ * Ëæ»úË¯Ãß
+ */
+const randomSleep = async () => {
+	console.log("Ëæ»úË¯Ãß");
+	await sleep(randomNum(1, 60) * SECOND);
+};
 
 module.exports = {
-    SECOND,
-    MINUTE,
-    HOUR,
-    sleep,
-    randomNum
-}
+	SECOND,
+	MINUTE,
+	HOUR,
+	sleep,
+	randomNum,
+	randomSleep,
+};
