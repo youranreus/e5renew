@@ -18,6 +18,8 @@ const run = async (token) => {
 		errorNum: 0,
 		totalNum: 0,
 		errors: [],
+        start: (new Date()).toLocaleDateString(),
+        end: ""
 	};
 
 	for (let i = 0; i < apiList.length; i++) {
@@ -33,6 +35,7 @@ const run = async (token) => {
 		report.totalNum++;
 	}
 
+    report.end = (new Date()).toLocaleDateString()
 	return report;
 };
 
