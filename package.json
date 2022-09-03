@@ -1,0 +1,18 @@
+{
+  "name": "e5renew",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [
+    "e5",
+    "renew"
+  ],
+  "author": "youranreus@qq.com",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.2"
+  }
+}
