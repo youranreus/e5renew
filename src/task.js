@@ -1,4 +1,4 @@
-const { createAPI, apiList } = require("./api");
+const { createAPI, apiList, createMail, sendMail } = require("./api");
 const { randomSleep } = require("./utils");
 
 /**
@@ -24,6 +24,7 @@ const run = async (token) => {
 		totalNum: 0,
 		errors: [],
 		start: new Date().toString(),
+		mail: false,
 		end: "",
 	};
 
@@ -32,7 +33,9 @@ const run = async (token) => {
 		try {
 			console.log(`[e5] user ${report.user} requesting ${apiList[i]}`);
 			await API.get(apiList[i]);
-			console.log(`[e5] user ${report.user} requested ${apiList[i]} successfully`);
+			console.log(
+				`[e5] user ${report.user} requested ${apiList[i]} successfully`
+			);
 			report.successNum++;
 		} catch (e) {
 			console.log("[e5] " + e.message);
@@ -40,6 +43,39 @@ const run = async (token) => {
 			report.errors.push([apiList[i], e.message]);
 		}
 		report.totalNum++;
+	}
+
+	console.log(`[e5] ${report.user} creating mail draft`);
+
+	try {
+		const draft = await createMail(API, {
+			subject: "Guten tag!",
+			importance: "Low",
+			body: {
+				contentType: "HTML",
+				content: `Today is <b>${(new Date()).toLocaleDateString()}</b>, hava a nice day!`,
+			},
+			toRecipients: [
+				{
+					emailAddress: {
+						address: UserData.mail,
+					},
+				},
+			],
+		})
+
+		if(draft.status !== 201) 
+			throw new Error("failed to create draft.");
+		
+		console.log(`[e5] ${report.user} sending mail draft`);
+
+		const mail = await sendMail(API, draft.data.id);
+		if (mail.status !== 202)
+			throw new Error(`${report.user} failed to send mail`);
+		console.log(`[e5] ${report.user} successfully sent mail`);
+		report.mail = true;
+	} catch (error) {
+		console.log("[e5] " + error.message);
 	}
 
 	report.end = new Date().toString();

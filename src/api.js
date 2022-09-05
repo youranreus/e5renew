@@ -28,6 +28,10 @@ const createAPI = (token) =>
 		},
 	});
 
+const createMail = (API, data) => API.post("/me/messages", data);
+
+const sendMail = (API, id) => API.post(`/me/messages/${id}/send`);
+
 const apiList = [
 	"/me/messages",
 	"/me/drive/root/children",
@@ -52,5 +56,7 @@ const apiList = [
 module.exports = {
 	login,
 	createAPI,
-	apiList
+	apiList,
+	createMail,
+	sendMail
 };

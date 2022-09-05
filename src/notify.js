@@ -11,6 +11,7 @@ const sendNotice = async (reports) => {
         successfully requested ${report.successNum} time(s)
         error occurred ${report.errorNum} time(s)
         ${report.totalNum} apis in total.
+		mail ${report.mail ? 'sent' : 'failed'}
         ------
         error list: ${report.errors}
         `;
