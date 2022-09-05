@@ -1,5 +1,6 @@
 const { createAPI, apiList, createMail, sendMail } = require("./api");
 const { randomSleep } = require("./utils");
+const dayjs = require('dayjs');
 
 /**
  * 获取用户数据
@@ -23,7 +24,7 @@ const run = async (token) => {
 		errorNum: 0,
 		totalNum: 0,
 		errors: [],
-		start: new Date().toString(),
+		start: dayjs().format('YYYY-M-D H:m:s'),
 		mail: false,
 		end: "",
 	};
@@ -78,7 +79,7 @@ const run = async (token) => {
 		console.log("[e5] " + error.message);
 	}
 
-	report.end = new Date().toString();
+	report.end = dayjs().format('YYYY-M-D H:m:s');
 	return report;
 };
 
