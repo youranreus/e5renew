@@ -3,15 +3,15 @@ const { randomSleep } = require("./utils");
 const dayjs = require('dayjs');
 
 /**
- * 获取用户数据
+ * 鑾峰彇鐢ㄦ埛淇℃伅
  * @param {Axios API} API API
  * @returns Object
  */
 const getUserData = async (API) => (await API.get("/me")).data;
 
 /**
- * 运行任务
- * @param {string} token 用户access token
+ * 鎵ц浠诲姟
+ * @param {string} token 鐢ㄦ埛access token
  * @returns Object
  */
 const run = async (token) => {
@@ -24,7 +24,7 @@ const run = async (token) => {
 		errorNum: 0,
 		totalNum: 0,
 		errors: [],
-		start: dayjs().format('YYYY-M-D H:m:s'),
+		start: dayjs().format('YYYY-M-D H:mm:ss'),
 		mail: false,
 		end: "",
 	};
@@ -54,7 +54,7 @@ const run = async (token) => {
 			importance: "Low",
 			body: {
 				contentType: "HTML",
-				content: `Today is <b>${(new Date()).toLocaleDateString()}</b>, hava a nice day!`,
+				content: `Today is <b>${dayjs().format('YYYY-M-D H:mm:ss')}</b>, hava a nice day!`,
 			},
 			toRecipients: [
 				{
@@ -79,7 +79,7 @@ const run = async (token) => {
 		console.log("[e5] " + error.message);
 	}
 
-	report.end = dayjs().format('YYYY-M-D H:m:s');
+	report.end = dayjs().format('YYYY-M-D H:mm:ss');
 	return report;
 };
 
