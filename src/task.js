@@ -1,6 +1,5 @@
 const { createAPI, apiList, createMail, sendMail } = require("./api");
-const { randomSleep } = require("./utils");
-const dayjs = require('dayjs');
+const { randomSleep, getDate } = require("./utils");
 
 /**
  * 获取用户信息
@@ -24,7 +23,7 @@ const run = async (token) => {
 		errorNum: 0,
 		totalNum: 0,
 		errors: [],
-		start: dayjs().format('YYYY-M-D H:mm:ss'),
+		start: getDate(),
 		mail: false,
 		end: "",
 	};
@@ -54,7 +53,7 @@ const run = async (token) => {
 			importance: "Low",
 			body: {
 				contentType: "HTML",
-				content: `Today is <b>${dayjs().format('YYYY-M-D H:mm:ss')}</b>, hava a nice day!`,
+				content: `Today is <b>${getDate()}</b>, hava a nice day!`,
 			},
 			toRecipients: [
 				{
@@ -79,7 +78,7 @@ const run = async (token) => {
 		console.log("[e5] " + error.message);
 	}
 
-	report.end = dayjs().format('YYYY-M-D H:mm:ss');
+	report.end = getDate();
 	return report;
 };
 
